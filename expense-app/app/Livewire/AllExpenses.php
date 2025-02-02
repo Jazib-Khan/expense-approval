@@ -23,7 +23,8 @@ class AllExpenses extends Component
             $query->whereHas('user', function ($userQuery) {
                 $userQuery->where('name', 'like', '%' . $this->search . '%');
             });
-        })->paginate(5);
+        })->paginate(5); // Paginates to 5 expense results
+
         return view('livewire.all-expenses', ['expenses' => $expenses]);
     }
 

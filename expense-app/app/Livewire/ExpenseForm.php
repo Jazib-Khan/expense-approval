@@ -20,13 +20,13 @@ class ExpenseForm extends Component
         // Validates expense inputs
         $this->validate([
             'description' => 'required|string|max:255',
-            'amount' => 'required|string|max:255',
+            'amount' => 'required|numeric',
             'category' => 'required|string|max:255',
             'receipt_image' => 'nullable|image|max:2048'
         ]);
 
         // Stores receipt path in directory
-        $receiptPath = $this->receipt_image->store('receipts', 'public');
+        $receiptPath = $this->receipt_image ? $this->receipt_image->store('receipts', 'public') : null;
 
         // Creates expense
         Expense::create([
