@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\EmployeeExpenses;
 use App\Livewire\ExpenseForm;
 use Illuminate\Support\Facades\Route;
 
@@ -17,7 +18,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::middleware(['is_employee'])->group(function () {
         Route::get('/expense/create', ExpenseForm::class)->name('expense.create');
-        /* Route::get('/expenses', ExpenseForm::class)->name('expenses.index'); */
+        Route::get('/expenses', EmployeeExpenses::class)->name('expenses.index');
     });
 });
 

@@ -27,6 +27,12 @@ new class extends Component
                         {{ __('Submit Expense') }}
                     </x-nav-link>
                 </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('expenses.index')" :active="request()->routeIs('expenses.index')" wire:navigate>
+                        {{ __('View Expenses') }}
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->

@@ -10,17 +10,17 @@
                 <form wire:submit.prevent="submitExpense" class="py-12  shadow-md rounded">
                     <div class="mb-4">
                         <label class="block text-white-700">Description</label>
-                        <input type="text" wire:model="description" class="w-full border rounded p-2 bg-gray-500">
+                        <input type="text" wire:model="description" class="w-full border rounded p-2 bg-gray-500" required>
                         @error('description') <span class="text-red-500">{{ $message }}</span> @enderror
                     </div>
                     <div class="mb-4">
                         <label class="block text-white-700">Amount</label>
-                        <input type="number" wire:model="amount" step="0.01" class="w-full border rounded p-2 bg-gray-500">
+                        <input type="number" wire:model="amount" step="0.01" class="w-full border rounded p-2 bg-gray-500" required>
                         @error('amount') <span class="text-red-500">{{ $message }}</span> @enderror
                     </div>
                     <div class="mb-4">
                         <label class="block text-white-700">Category</label>
-                        <input type="text" wire:model="category" class="w-full border rounded p-2 bg-gray-500">
+                        <input type="text" wire:model="category" class="w-full border rounded p-2 bg-gray-500" required>
                         @error('category') <span class="text-red-500">{{ $message }}</span> @enderror
                     </div>
                     <div class="mb-4">

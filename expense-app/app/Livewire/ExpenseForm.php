@@ -15,6 +15,7 @@ class ExpenseForm extends Component
 
     public function submitExpense()
     {
+        // Validates expense inputs
         $this->validate([
             'description' => 'required|string|max:255',
             'amount' => 'required|string|max:255',
@@ -22,8 +23,10 @@ class ExpenseForm extends Component
             'receipt_image' => 'nullable|image|max:2048'
         ]);
 
+        // Stores receipt path in directory
         $receiptPath = $this->receipt_image->store('receipts', 'public');
 
+        // Creates expense
         Expense::create([
             'user_id' => Auth::id(),
             'description' => $this->description,
