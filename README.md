@@ -30,4 +30,8 @@ I also added livewire pagination for all the expenses within the admin dashboard
 ![image](https://github.com/user-attachments/assets/0c4b53ac-643f-4446-909b-8cabcb39cb8c)
 ![image](https://github.com/user-attachments/assets/f71ea0cc-0f09-4b3b-9823-8d31cee41eb5)
 ![image](https://github.com/user-attachments/assets/2e098534-fc3f-4ce2-a67b-be2fa9030f4b)
+![image](https://github.com/user-attachments/assets/56e508bb-cea3-411f-8f01-dc276b404ee5)
+![image](https://github.com/user-attachments/assets/489597bf-13fd-4e58-9d5b-be1024d7c654)
+
+
 
