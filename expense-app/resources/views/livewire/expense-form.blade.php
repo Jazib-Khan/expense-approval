@@ -7,7 +7,7 @@
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
             <div class="p-6 text-gray-900 dark:text-gray-100">
-                <form wire:submit.prevent="submitExpense" class="py-12  shadow-md rounded">
+                <form wire:submit.prevent="submitExpense" class="py-2 shadow-md rounded">
                     <div class="mb-4">
                         <label class="block text-white-700">Description</label>
                         <input type="text" wire:model="description" class="w-full border rounded p-2 bg-gray-500" required>

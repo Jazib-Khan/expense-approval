@@ -2,8 +2,10 @@
 
 namespace App\Livewire;
 
+use App\Mail\ExpenseSubmitted;
 use App\Models\Expense;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -34,6 +36,16 @@ class ExpenseForm extends Component
             'category' => $this->category,
             'receipt_image' => $receiptPath,
         ]);
+
+        // Send email to admin for expense update
+        Mail::to('admin@example.com')->send(
+            new ExpenseSubmitted(
+                Auth::user()->email,
+                $this->description,
+                $this->amount,
+                $this->category
+            )
+        );
 
         session()->flash('message', 'Expense submitted successfully');
         $this->reset();

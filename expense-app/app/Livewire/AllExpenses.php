@@ -2,7 +2,10 @@
 
 namespace App\Livewire;
 
+use App\Mail\ExpenseStatusUpdated;
 use App\Models\Expense;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 
 class AllExpenses extends Component
@@ -25,5 +28,17 @@ class AllExpenses extends Component
         $expense = Expense::findOrFail($id);
         $expense->status = $status;
         $expense->save();
+
+        // Send email to user of request approval or rejection
+        Mail::to($expense->user->email)->send(
+            new ExpenseStatusUpdated(
+                Auth::user()->email,
+                $expense->status,
+                $expense->category,
+                $expense->description,
+                $expense->amount,
+                $expense->user->email,
+            )
+        );
     }
 }
