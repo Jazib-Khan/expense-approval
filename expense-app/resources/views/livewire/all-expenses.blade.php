@@ -8,6 +8,11 @@
         <div class="bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
             <div class="p-6">
                 <h2 class="text-xl text-gray-200 font-bold mb-4">Employee Expense Requests</h2>
+                <div class="mb-4">
+                    <input type="text" wire:model.live="search"
+                           placeholder="Search by Employee Name..."
+                           class="w-full p-2 border rounded bg-gray-700 text-white">
+                </div>
                 <table class="w-full border-collapse border">
                     <thead>
                         <tr class="text-gray-200">
@@ -43,6 +48,9 @@
                         @endforeach
                     </tbody>
                 </table>
+
+                {{ $expenses->links() }}
+
             </div>
         </div>
     </div>

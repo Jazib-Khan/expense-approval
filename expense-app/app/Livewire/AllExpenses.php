@@ -7,13 +7,23 @@ use App\Models\Expense;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class AllExpenses extends Component
 {
+
+    use WithPagination;
+
+    public $search = '';
+
     public function render()
     {
-        // Retrieves and outputs all Expenses
-        $expenses = Expense::all();
+        // Retrieves and outputs expenses based on search query for user names
+        $expenses = Expense::when($this->search, function ($query) {
+            $query->whereHas('user', function ($userQuery) {
+                $userQuery->where('name', 'like', '%' . $this->search . '%');
+            });
+        })->paginate(5);
         return view('livewire.all-expenses', ['expenses' => $expenses]);
     }
 
