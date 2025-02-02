@@ -14,4 +14,9 @@ class Expense extends Model
         'receipt_image',
         'status',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

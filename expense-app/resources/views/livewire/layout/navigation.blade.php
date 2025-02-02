@@ -22,17 +22,27 @@ new class extends Component
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('expense.create')" :active="request()->routeIs('expense.create')" wire:navigate>
-                        {{ __('Submit Expense') }}
-                    </x-nav-link>
-                </div>
+                @if(auth()->user()->role === 'employee')
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('expense.create')" :active="request()->routeIs('expense.create')" wire:navigate>
+                            {{ __('Submit Expense') }}
+                        </x-nav-link>
+                    </div>
 
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('expenses.index')" :active="request()->routeIs('expenses.index')" wire:navigate>
-                        {{ __('View Expenses') }}
-                    </x-nav-link>
-                </div>
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('expenses.index')" :active="request()->routeIs('expenses.index')" wire:navigate>
+                            {{ __('View Expenses') }}
+                        </x-nav-link>
+                    </div>
+                @endif
+
+                @if(auth()->user()->role === 'admin')
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('admin.expenses')" :active="request()->routeIs('admin.expenses')" wire:navigate>
+                            {{ __('Expenses') }}
+                        </x-nav-link>
+                    </div>
+                @endif
             </div>
 
             <!-- Settings Dropdown -->
